@@ -19,14 +19,10 @@
 
 ```bash
 pip install -r requirements.txt
-python main.py all          # выполнение всех шагов подряд (около 40 секунд)
-streamlit run app.py        # запуск дашборда
+python main.py all          
+streamlit run app.py      
 ```
 
-При запуске `python main.py` без аргументов открывается консольное меню. Шаги можно выполнять по отдельности:
-`python main.py load | db | analyze | plots | forecast`.
-
-Проект работает в консоли, VS Code, PyCharm и Google Colab (в Colab файл данных необходимо поместить в `data/` и выполнить `!python main.py all`).
 
 ## Структура проекта
 

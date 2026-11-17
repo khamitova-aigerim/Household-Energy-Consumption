@@ -1,0 +1,91 @@
+{
+  "checks": {
+    "row_counts": {
+      "dim_date": 1433,
+      "dim_meter": 4,
+      "fact_hourly": 34168,
+      "fact_hourly_meter": 136672
+    },
+    "foreign_key_problems": 0,
+    "integrity_check": "ok"
+  },
+  "queries": [
+    {
+      "query": "q01_season_weekend",
+      "title": "Средняя нагрузка по сезонам: будни и выходные",
+      "technique": "JOIN + GROUP BY",
+      "rows": 8,
+      "seconds": 0.0216
+    },
+    {
+      "query": "q02_monthly_total",
+      "title": "Сумма кВт·ч по имеющимся часам за месяц (месяцы с 600+ часов данных)",
+      "technique": "GROUP BY + HAVING",
+      "rows": 47,
+      "seconds": 0.0223
+    },
+    {
+      "query": "q03_top_peak_hours",
+      "title": "10 самых нагруженных часов за всё время",
+      "technique": "JOIN + ORDER BY + LIMIT",
+      "rows": 10,
+      "seconds": 0.0362
+    },
+    {
+      "query": "q04_days_above_average",
+      "title": "Дни с потреблением выше среднего за все полные дни",
+      "technique": "CTE + подзапрос",
+      "rows": 15,
+      "seconds": 0.0456
+    },
+    {
+      "query": "q05_moving_average",
+      "title": "Скользящее среднее за 7 полных дней",
+      "technique": "CTE + оконная функция AVG OVER",
+      "rows": 20,
+      "seconds": 0.0483
+    },
+    {
+      "query": "q06_day_change",
+      "title": "Изменение потребления к предыдущему полному дню",
+      "technique": "оконная функция LAG",
+      "rows": 10,
+      "seconds": 0.033
+    },
+    {
+      "query": "q07_top_hours_by_season",
+      "title": "Три самых нагруженных часа суток в каждом сезоне",
+      "technique": "CTE + оконная функция RANK",
+      "rows": 12,
+      "seconds": 0.1364
+    },
+    {
+      "query": "q08_meter_share",
+      "title": "Доля каждого счётчика в потреблении по годам",
+      "technique": "3 JOIN + оконная функция SUM OVER",
+      "rows": 20,
+      "seconds": 0.5829
+    },
+    {
+      "query": "q09_longest_gaps",
+      "title": "Самые длинные пропуски в почасовых данных",
+      "technique": "CTE + оконная функция LAG + julianday",
+      "rows": 8,
+      "seconds": 0.1075
+    },
+    {
+      "query": "q10_evening_peak",
+      "title": "Вечерний пик (18–22 ч) против остального времени по дням недели",
+      "technique": "JOIN + CASE внутри AVG",
+      "rows": 7,
+      "seconds": 0.0222
+    }
+  ],
+  "sql_vs_pandas": {
+    "sql_seconds": 0.0153,
+    "pandas_seconds_including_read": 0.0571,
+    "results_match": true,
+    "months": 48
+  },
+  "erd": "erd.dot (Graphviz не найден, открой файл на graphviz.org/online или в dbdiagram)"
+}

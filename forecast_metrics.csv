@@ -1,5 +1,0 @@
-method,MAE_kwh,RMSE_kwh,seconds,peak_memory_mb,MAE_vs_baseline_percent
-naive (baseline),5.166,7.125,0.0015,0.02,0.0
-seasonal_naive_7,5.976,7.975,0.0005,0.02,15.7
-moving_avg_7,4.337,5.903,0.00128,0.014,-16.0
-linear_regression,4.297,5.896,0.09046,0.412,-16.8
